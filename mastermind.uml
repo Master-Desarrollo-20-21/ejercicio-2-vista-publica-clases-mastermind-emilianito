@@ -1,0 +1,52 @@
+@startuml
+
+class Mastermind {
+  + play()
+}
+
+class Computer {
+    checkCode()
+}
+
+class History {
+  save()
+  print()
+}
+
+class Code {
+    match(code)
+}
+
+class Console {
+    writeString()
+    readString()
+}
+
+class Player {
+    askForCode()
+}
+
+class WhiteBlackResponse {
+
+}
+
+class Ficha {}
+
+Enum Color{}
+
+Mastermind *--> Console
+Mastermind *-->Player
+Mastermind *-->Computer
+Computer *-->History
+Computer *-->Code
+Computer --> WhiteBlackResponse
+Code --> Code
+History *-->Code
+History -->Console
+History "1..10" *--> WhiteBlackResponse
+Player -->Code
+Code "4" *--> Ficha
+Ficha *--> Color
+
+
+@enduml
