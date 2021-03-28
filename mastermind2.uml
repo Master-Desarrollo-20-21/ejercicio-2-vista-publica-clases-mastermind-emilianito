@@ -1,0 +1,57 @@
+@startuml
+
+class Mastermind {
+  + play()
+}
+
+
+class History {
+  add()
+  print()
+}
+
+class Code {
+    match(code)
+}
+
+class CodeSecret extends Code {
+}
+
+
+class Console {
+    writeString()
+    readString()
+}
+
+
+class WhiteBlackResponse {
+  nBlack
+  nWhite
+  isWinner()
+}
+
+class HistoryItem{}
+
+class Game {
+  run()
+}
+
+class Ficha {}
+
+Enum Color{}
+
+Game *--> Console
+Game *--> History
+Game *--> CodeSecret
+Game --> Code
+History "1..10" *-->HistoryItem
+History -->Console
+HistoryItem -->Code
+HistoryItem -->WhiteBlackResponse
+Code "4" *--> Ficha
+Ficha *--> Color
+Mastermind *--> Game
+Mastermind *--> Console
+
+
+@enduml
